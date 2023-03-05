@@ -21,6 +21,12 @@ def all_emp(request):
 
 
 def add_emp(request):
+    depts = Department.objects.all()
+    roles = Role.objects.all()
+    context = {
+        'depts' : depts,
+        'roles' : roles
+    }
     if request.method == "POST":
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
@@ -41,7 +47,7 @@ def add_emp(request):
         new_emp.save()
         return HttpResponse("Employee Added Succesfully")
     else:
-        return render(request, 'add_emp.html')
+        return render(request, 'add_emp.html', context)
 
 
 def remove_emp(request, emp_id=0):
