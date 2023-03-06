@@ -28,4 +28,4 @@ class Employee(models.Model):
     hire_date = models.DateField()
 
     def __str__(self):
-        return "%s %s , %s , %s" %(self.first_name, self.last_name, self.role, self.phone)
+        return "%s. %s %s , %s , %s" %(self.id, self.first_name, self.last_name, self.role.name, self.phone)
